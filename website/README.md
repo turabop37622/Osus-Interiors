@@ -43,3 +43,8 @@ To add or replace one, copy a `<article class="reel-card">` block in `index.html
 
 ## Colours
 Taken from the OSUS logo: `--ink #34151e` (maroon — text, dark sections, logo), `--acid #e6d3cc` (blush accent), `--paper #f1f0eb`, `--soft #d8d7d0`, `--line #b8b7b0`, `--olive #9a6f78` (in `css/style.css`). `assets/logo/osus-logo-black.png` is the original black logo.
+
+## Performance
+- Each photo has a smaller `-800.webp` copy (hero: `-900` / `-1400`); `index.html` lists them in `srcset` so phones download the small one. When replacing a photo, regenerate both sizes.
+- Videos are H.264 CRF 30, 540×960, muted, `faststart`. Only the active clip plays; the first one starts buffering ~800px before the section is reached.
+- `vercel.json` caches `/assets/*` for 7 days and `/css`, `/js` for 1 hour. Assets are not fingerprinted, so give a replaced file a new name if it must update immediately.

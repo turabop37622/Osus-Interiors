@@ -262,6 +262,13 @@
       if (e.key === 'ArrowLeft') goTo(active - 1);
     });
 
+    // Start buffering the first clip before the section scrolls into view
+    new IntersectionObserver(([entry], observer) => {
+      if (!entry.isIntersecting) return;
+      videos[active].preload = 'auto';
+      observer.disconnect();
+    }, { rootMargin: '800px 0px' }).observe(stage);
+
     // Only play while the section is on screen
     new IntersectionObserver(([entry]) => {
       inView = entry.isIntersecting;
