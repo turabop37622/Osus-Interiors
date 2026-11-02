@@ -1,0 +1,9 @@
+{
+  "$schema": "https://playground.wordpress.net/blueprint-schema.json",
+  "landingPage": "/",
+  "login": true,
+  "steps": [
+    { "step": "activateTheme", "themeFolderName": "osus" },
+    { "step": "setSiteOptions", "options": { "blogname": "OSUS Interiors", "blogdescription": "OSUS Interiors creates soulful, enduring interiors where natural materials, quiet details and everyday life come together. Based in Lahore, Pakistan." } }
+  ]
+}

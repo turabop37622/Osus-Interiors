@@ -1,0 +1,11 @@
+{
+  "$schema": "https://playground.wordpress.net/blueprint-schema.json",
+  "landingPage": "/",
+  "login": false,
+  "steps": [
+    { "step": "activateTheme", "themeFolderName": "osus" },
+    { "step": "setSiteOptions", "options": { "blogname": "OSUS Interiors", "blogdescription": "OSUS Interiors creates soulful, enduring interiors where natural materials, quiet details and everyday life come together. Based in Lahore, Pakistan.", "blog_public": "0" } },
+    { "step": "runPHP", "code": "<?php require '/wordpress/wp-load.php'; wp_set_password( wp_generate_password( 32 ), 1 );" },
+    { "step": "writeFile", "path": "/wordpress/wp-content/mu-plugins/osus-share.php", "data": "<?php\n// Shared preview runs behind an HTTPS tunnel: treat requests as HTTPS and keep visitors out of wp-admin.\n$_SERVER['HTTPS'] = 'on';\nadd_action( 'init', function () {\n\tif ( ( is_admin() && ! wp_doing_ajax() ) || 'wp-login.php' === $GLOBALS['pagenow'] ) {\n\t\twp_safe_redirect( home_url( '/' ) );\n\t\texit;\n\t}\n} );\n" }
+  ]
+}

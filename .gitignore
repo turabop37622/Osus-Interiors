@@ -1,0 +1,9 @@
+# Only the site code is versioned; the root folder also holds raw client media.
+/*
+!/.gitignore
+!/README.md
+!/website/
+!/wordpress/
+
+# Build output
+/wordpress/osus-theme.zip
