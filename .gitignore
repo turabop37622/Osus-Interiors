@@ -7,3 +7,6 @@
 
 # Build output
 /wordpress/osus-theme.zip
+
+.vercel
+.env*
