@@ -8,18 +8,24 @@
 2. **Settings → Reading** → "Your homepage displays": leave on *Your latest posts*, or pick any static page — `front-page.php` always renders the homepage.
 3. **Settings → General** → set the Site Title and Tagline (the tagline is used as the meta description).
 
-The zip is ~6.7 MB. If the host's upload limit is lower, upload the `osus` folder to `wp-content/themes/` over FTP / File Manager instead.
+The zip is ~10 MB (photos and videos included). If the host's upload limit is lower, upload the `osus` folder to `wp-content/themes/` over FTP / File Manager instead.
 
 ## Editing content
 **Appearance → Customize → OSUS homepage**
 
 | Section | What you can change |
 |---|---|
-| Hero | label, headline, intro text, hero image, caption |
+| Hero | label, headline (one line per line of text), intro text, 4 × slideshow photo + caption |
 | Studio | scroll-fill heading, text |
-| Selected projects | heading, 3 × image / name / type |
 | Video carousel | 6 × MP4 / cover image / title / subtitle (empty video = slide hidden) |
-| Contact details | email, phone, Instagram, location line |
+| Selected projects | heading, 6 × name / type · city / photo URLs, one per line (empty name = hidden) |
+| What we do | 5 × service name / two-line detail / photo |
+| Client reviews | 6 × review / client name / project · city (empty text = hidden). Defaults are labelled sample reviews — replace them with genuine ones. |
+| Contact & forms | Web3Forms key (enquiry + review forms), email, phone, WhatsApp number, Instagram, location line |
+
+Project photos: upload them in **Media → Add New**, open each one, copy its **File URL** and paste one URL per line. Photos uploaded this way get responsive sizes automatically.
+
+Forms: create a free access key at [web3forms.com](https://web3forms.com) with the Gmail address that should receive enquiries and reviews, and paste it into **Contact & forms**. Until then both forms say "not connected yet" and send nothing. Submitted reviews only arrive by email; add the ones you approve under **Client reviews**.
 
 Logo: **Customize → Site Identity → Logo** (falls back to the bundled OSUS logo). Favicon: **Site Icon**.
 Menu: optional — create one under **Appearance → Menus** and assign it to *Main navigation*; without it the header links to the homepage sections.

@@ -83,7 +83,8 @@
   }
 
   // Highlight the nav link of the section in view
-  const navLinks = [...document.querySelectorAll('.nav-links a')];
+  // only in-page anchors; a WordPress menu may also link to other pages
+  const navLinks = [...document.querySelectorAll('.nav-links a')].filter((link) => /^#[\w-]+$/.test(link.getAttribute('href')));
   const sections = navLinks
     .map((link) => document.querySelector(link.getAttribute('href')))
     .filter(Boolean)
