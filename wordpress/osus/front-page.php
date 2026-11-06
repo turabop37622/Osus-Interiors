@@ -84,19 +84,22 @@ $osus_email = osus_mod( 'contact_email' );
     <section class="services section" id="services">
       <p class="section-label"><?php esc_html_e( 'What we do', 'osus' ); ?></p>
       <div class="service-list">
-        <article class="service-row scroll-reveal"><p>01</p><h3><?php esc_html_e( 'Interior Design', 'osus' ); ?></h3><span>↗</span></article>
-        <article class="service-row scroll-reveal"><p>02</p><h3><?php esc_html_e( 'Space Planning', 'osus' ); ?></h3><span>↗</span></article>
-        <article class="service-row scroll-reveal"><p>03</p><h3><?php esc_html_e( 'Furniture & Styling', 'osus' ); ?></h3><span>↗</span></article>
+        <?php
+        $osus_services = array( 'Interior Designing', 'Architectural Planning', 'Project Management', 'Turnkey Solution', 'Furniture & Space Planning' );
+        foreach ( $osus_services as $i => $service ) :
+        ?>
+        <article class="service-row scroll-reveal"><p><?php echo esc_html( str_pad( $i + 1, 2, '0', STR_PAD_LEFT ) ); ?></p><h3><?php echo esc_html( $service ); ?></h3><span>↗</span></article>
+        <?php endforeach; ?>
       </div>
     </section>
 
     <?php if ( $osus_reels ) : ?>
-    <section class="reel section" id="reel" aria-roledescription="carousel" aria-label="<?php esc_attr_e( 'Projects in motion', 'osus' ); ?>">
+    <section class="reel section" id="reel" aria-roledescription="carousel" aria-label="<?php esc_attr_e( 'Our signature spaces', 'osus' ); ?>">
       <div class="reel-ambient" aria-hidden="true"></div>
       <div class="reel-head scroll-reveal">
         <div>
           <p class="section-label"><?php esc_html_e( 'In motion', 'osus' ); ?></p>
-          <h2><?php esc_html_e( 'Spaces,', 'osus' ); ?><br><em><?php esc_html_e( 'in motion.', 'osus' ); ?></em></h2>
+          <h2><?php esc_html_e( 'Our signature', 'osus' ); ?><br><em><?php esc_html_e( 'spaces.', 'osus' ); ?></em></h2>
         </div>
         <div class="reel-controls">
           <p class="reel-count"><span data-reel-current>01</span><i></i><span data-reel-total><?php echo esc_html( str_pad( count( $osus_reels ), 2, '0', STR_PAD_LEFT ) ); ?></span></p>
@@ -165,7 +168,7 @@ $osus_email = osus_mod( 'contact_email' );
 
     <section class="quote scroll-reveal">
       <p class="section-label"><?php esc_html_e( 'Our philosophy', 'osus' ); ?></p>
-      <blockquote>“<?php esc_html_e( 'A room should feel collected, not decorated.', 'osus' ); ?>”</blockquote>
+      <blockquote data-scroll-fill>“<?php esc_html_e( 'A room should feel collected, not decorated.', 'osus' ); ?>”</blockquote>
       <p><?php esc_html_e( 'We design for real life—calm, tactile and quietly expressive.', 'osus' ); ?></p>
     </section>
 

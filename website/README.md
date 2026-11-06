@@ -48,3 +48,13 @@ Taken from the OSUS logo: `--ink #34151e` (maroon — text, dark sections, logo)
 - Each photo has a smaller `-800.webp` copy (hero: `-900` / `-1400`); `index.html` lists them in `srcset` so phones download the small one. When replacing a photo, regenerate both sizes.
 - Videos are H.264 CRF 30, 540×960, muted, `faststart`. Only the active clip plays; the first one starts buffering ~800px before the section is reached.
 - `vercel.json` caches `/assets/*` for 7 days and `/css`, `/js` for 1 hour. Assets are not fingerprinted, so give a replaced file a new name if it must update immediately.
+
+## Sections that need client content
+- **Projects carousel** (`#projects`): photos live in `assets/images/projects/<project>-<n>.webp` (+ `-800` copy). Each `<img data-project="N">` belongs to the list item `data-pcar-project="N"`; add a project by adding its images and one `<li>`. Photos hold 3.5 s (`DURATION` in `js/main.js`). Sources: Aurelle `5-10-2026/2,3,4,6,7`, CC-2 Apartment `20-10-2026/2–6`, Sage Suite `10-10-2026/1–3`, The Residence `6-10-2026/1,2,3,6` (bottom 12% cropped to remove the watermark). Names other than CC-2 Islamabad are placeholders.
+- **Services accordion** (`#services`): the one-line descriptions are drafts—replace with the client's text.
+- **Reviews** (`#reviews`): three placeholder slides; paste real reviews before publishing.
+- **Enquiry form** (`#enquiry`): sends through [Web3Forms](https://web3forms.com). Create a free access key with the Gmail address that should receive enquiries, then replace both `YOUR_WEB3FORMS_ACCESS_KEY` values in `index.html` (enquiry form and the "Share your experience" review form under the reviews). Until then the form shows "not connected yet" and sends nothing.
+- **Review submissions**: customers send reviews by email only. Nothing is published automatically. Add an approved review to the `.reviews-row` in `index.html` (the marquee duplicates cards on its own).
+
+## SEO
+Title/description, canonical, Open Graph image (`assets/images/og-image.jpg`), `HomeAndConstructionBusiness` JSON-LD, `robots.txt` and `sitemap.xml`. After going live, add the site to Google Search Console and submit the sitemap.

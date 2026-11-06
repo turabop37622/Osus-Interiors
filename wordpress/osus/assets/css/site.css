@@ -259,6 +259,7 @@ h1 {
   font-size: clamp(42px, 6vw, 88px);
   line-height: .98;
 }
+.studio h2 { font-size: clamp(30px, 4.4vw, 64px); line-height: 1.05; }
 .studio-content > div p { margin-bottom: 36px; font-size: 14px; line-height: 1.75; }
 
 /* ---------- Material story ---------- */
@@ -542,6 +543,8 @@ h1 {
 .detail-card:nth-child(2) { transition-delay: .12s; }
 .project-card:nth-child(3), .service-row:nth-child(3),
 .detail-card:nth-child(3) { transition-delay: .24s; }
+.service-row:nth-child(4) { transition-delay: .36s; }
+.service-row:nth-child(5) { transition-delay: .48s; }
 
 /* ---------- Quote ---------- */
 .quote { padding: 14vw 4vw; text-align: center; }
