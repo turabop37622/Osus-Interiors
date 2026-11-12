@@ -311,7 +311,7 @@
       heroIndex = (i + slides.length) % slides.length;
       slides.forEach((slide, s) => slide.classList.toggle('is-active', s === heroIndex));
       heroDots.forEach((dot, d) => dot.classList.toggle('is-active', d === heroIndex));
-      heroCaption.textContent = slides[heroIndex].dataset.caption;
+      if (heroCaption) heroCaption.textContent = slides[heroIndex].dataset.caption;
     };
     showHero(0);
     window.addEventListener('load', () => slides.forEach((slide) => {

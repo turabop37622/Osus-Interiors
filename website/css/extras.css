@@ -1,0 +1,257 @@
+/* ==========================================================
+   OSUS Interiors — preview extras (website-v2 only)
+   Stats, before/after, founder, brands, FAQ, how we meet, lightbox
+   ========================================================== */
+
+:root { --rose-text: #7a4f5a; }
+
+/* Marks content that still needs the client's real data */
+.sample-tag {
+  display: inline-block;
+  margin: 0 0 18px;
+  padding: 4px 9px;
+  border: 1px dashed var(--rose-text);
+  color: var(--rose-text);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+
+/* ---------- Stats ---------- */
+.stats { padding: 5vw 2.5vw; border-bottom: 1px solid var(--line); }
+.stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); }
+.stat { display: grid; gap: 12px; padding: 1vw 2vw; border-left: 1px solid var(--line); }
+.stat:first-child { border-left: 0; padding-left: 0; }
+.stat strong { font-family: var(--serif); font-size: clamp(44px, 6vw, 96px); font-weight: 400; line-height: 1; font-variant-numeric: tabular-nums; }
+.stat span { font-size: 11px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; }
+
+/* ---------- Project carousel additions ---------- */
+.pcar-stage { cursor: zoom-in; }
+
+/* ---------- Before / after ---------- */
+.compare-frame {
+  position: relative;
+  width: min(100%, 620px);
+  aspect-ratio: 4 / 5;
+  margin: 0 auto;
+  overflow: hidden;
+  user-select: none;
+}
+.compare-frame img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.compare-before { position: absolute; inset: 0; clip-path: inset(0 calc(100% - var(--pos)) 0 0); }
+.compare-handle {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: var(--pos);
+  width: 2px;
+  background: #fff;
+  pointer-events: none;
+}
+.compare-handle i {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  display: grid;
+  place-items: center;
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  background: var(--paper);
+  color: var(--ink);
+  font-style: normal;
+  font-size: 20px;
+  transform: translate(-50%, -50%);
+  box-shadow: 0 8px 24px rgba(28, 10, 16, .3);
+}
+.compare-label {
+  position: absolute;
+  top: 16px;
+  padding: 7px 11px;
+  background: rgba(28, 10, 16, .55);
+  color: #fff;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  pointer-events: none;
+}
+.compare-label-before { left: 16px; }
+.compare-label-after { right: 16px; }
+/* the range input covers the frame so dragging anywhere (or arrow keys) moves the line */
+.compare-frame input {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  opacity: 0;
+  cursor: ew-resize;
+}
+.compare-frame:has(input:focus-visible) .compare-handle i { outline: 2px solid var(--ink); outline-offset: 3px; }
+
+/* ---------- Founder ---------- */
+.founder { display: grid; grid-template-columns: 1fr 1.25fr; align-items: center; gap: 6vw; background: var(--soft); }
+.founder-placeholder {
+  display: grid;
+  place-items: center;
+  aspect-ratio: 4 / 5;
+  border: 1px dashed var(--olive);
+  color: var(--olive);
+  font-size: 11px;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
+.founder-photo img { width: 100%; height: auto; aspect-ratio: 4 / 5; object-fit: cover; }
+.founder-copy .section-label { margin-bottom: 24px; }
+.founder-copy h2 { margin: 0 0 30px; font-size: clamp(28px, 3.4vw, 52px); line-height: 1.15; }
+.founder-copy > p:not(.section-label):not(.founder-name) { max-width: 520px; line-height: 1.8; }
+.founder-name { display: grid; gap: 6px; margin-top: 34px; }
+.founder-name strong { font-family: var(--serif); font-size: 22px; font-weight: 400; }
+.founder-name span { font-size: 11px; letter-spacing: .1em; text-transform: uppercase; }
+
+/* ---------- Brands ---------- */
+.brands { padding: 4vw 2.5vw; border-top: 1px solid var(--line); text-align: center; }
+.brands .section-label { margin-bottom: 14px; }
+.brands-track {
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent);
+}
+.brands-row { display: flex; width: max-content; animation: marquee-travel 32s linear infinite; }
+.brands-row span {
+  padding: 18px 46px;
+  color: var(--rose-text);
+  font-family: var(--serif);
+  font-size: clamp(22px, 2.4vw, 34px);
+  white-space: nowrap;
+}
+
+/* ---------- FAQ ---------- */
+.faq { display: grid; grid-template-columns: 1fr 1.6fr; gap: 6vw; border-top: 1px solid var(--line); }
+.faq-head h2 { margin: 24px 0 24px; font-size: clamp(30px, 4.6vw, 70px); line-height: 1.05; }
+.faq-list { border-top: 1px solid var(--ink); }
+.faq-list details { border-bottom: 1px solid var(--ink); }
+.faq-list summary {
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 26px 0;
+  font-family: var(--serif);
+  font-size: clamp(20px, 2vw, 30px);
+  line-height: 1.25;
+  cursor: pointer;
+  list-style: none;
+}
+.faq-list summary::-webkit-details-marker { display: none; }
+.faq-list summary::after { content: "+"; flex: none; font-family: Manrope, sans-serif; font-size: 22px; transition: transform .35s var(--ease-out); }
+.faq-list details[open] summary::after { transform: rotate(45deg); }
+.faq-list details p { max-width: 640px; margin: 0 0 28px; line-height: 1.8; }
+
+/* ---------- How we meet (no physical studio) ---------- */
+.meet { max-width: 520px; margin: 44px 0 0; padding: 0; list-style: none; border-top: 1px solid var(--line); }
+.meet li { display: grid; grid-template-columns: 40px 1fr; padding: 16px 0; border-bottom: 1px solid var(--line); line-height: 1.6; }
+.meet span { padding-top: 4px; color: var(--rose-text); font-size: 11px; }
+
+/* ---------- Lightbox ---------- */
+.lightbox {
+  position: fixed;
+  z-index: 200;
+  inset: 0;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 2vw;
+  padding: 3vw;
+  background: #1c0a10;
+  color: var(--paper);
+  animation: page-enter .35s ease both;
+}
+.lightbox[hidden] { display: none; }
+.lightbox figure { display: grid; justify-items: center; gap: 14px; margin: 0; min-width: 0; }
+.lightbox img { max-width: 100%; max-height: 82vh; object-fit: contain; }
+.lightbox figcaption { font-size: 11px; letter-spacing: .12em; text-transform: uppercase; opacity: .8; }
+.lightbox button { border: 1px solid rgba(241, 240, 235, .35); border-radius: 50%; background: none; color: inherit; }
+.lightbox-nav { width: 56px; height: 56px; font-size: 18px; }
+.lightbox-close { position: absolute; top: 18px; right: 18px; width: 48px; height: 48px; font-size: 24px; }
+.lightbox button:hover { background: var(--acid); border-color: var(--acid); color: var(--ink); }
+/* horizontal swipes belong to the lightbox; vertical ones stay with the browser */
+.lightbox { touch-action: pan-y; user-select: none; }
+.lightbox-dots { display: flex; justify-content: center; gap: 0; }
+.lightbox-dots button { width: 14px; height: 24px; padding: 0; border: 0; border-radius: 0; background: none; }
+.lightbox-dots button::before { content: ""; display: block; width: 6px; height: 6px; margin: auto; border-radius: 50%; background: rgba(241, 240, 235, .35); transition: background .3s, transform .3s; }
+.lightbox-dots button.is-active::before { background: var(--paper); transform: scale(1.3); }
+.lightbox-dots button:hover { background: none; }
+body.has-lightbox { overflow: hidden; }
+body.has-lightbox .whatsapp { display: none; }
+
+/* ---------- Case study page ---------- */
+.case-hero { position: relative; height: calc(100svh - 88px); min-height: 520px; overflow: hidden; color: #fff; }
+.case-hero > img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.case-hero::after { content: ""; position: absolute; inset: 0; background: linear-gradient(to top, rgba(28, 10, 16, .75), rgba(28, 10, 16, .1) 60%); }
+.case-hero-copy { position: absolute; z-index: 1; left: 2.5vw; right: 2.5vw; bottom: 4.5vw; }
+.case-hero-copy h1 { margin: 18px 0 0; font-size: clamp(44px, 8vw, 128px); line-height: 1; }
+.case-back { display: inline-block; margin-bottom: 28px; font-size: 11px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; }
+.case-facts dl { display: grid; grid-template-columns: repeat(5, 1fr); margin: 0; border-top: 1px solid var(--ink); }
+.case-facts dl div { padding: 22px 1.5vw 0 0; }
+.case-facts dt { margin-bottom: 10px; font-size: 11px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; }
+.case-facts dd { margin: 0; font-family: var(--serif); font-size: clamp(18px, 1.6vw, 24px); }
+.case-story { display: grid; grid-template-columns: 1fr 2fr; gap: 4vw; padding-top: 0; }
+.case-story h2 { margin: 0 0 30px; font-size: clamp(28px, 3.6vw, 56px); line-height: 1.12; }
+.case-story p:not(.section-label) { max-width: 620px; line-height: 1.8; }
+.case-gallery { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5vw; padding-top: 0; }
+.case-gallery img { width: 100%; height: 100%; aspect-ratio: 1080 / 1188; object-fit: cover; cursor: zoom-in; }
+.case-gallery img:nth-child(3n + 1) { grid-column: 1 / -1; aspect-ratio: 16 / 9; }
+.case-next { display: flex; flex-wrap: wrap; align-items: end; justify-content: space-between; gap: 30px; border-top: 1px solid var(--line); }
+.case-next-link { display: grid; gap: 12px; }
+.case-next-link strong { font-family: var(--serif); font-size: clamp(32px, 5vw, 80px); font-weight: 400; line-height: 1; }
+.case-next-link em { font-size: 11px; font-style: normal; letter-spacing: .1em; text-transform: uppercase; }
+
+/* ---------- Responsive ---------- */
+@media (max-width: 800px) {
+  .stats { padding: 10vw 5vw; }
+  .stats-grid { grid-template-columns: 1fr 1fr; row-gap: 8vw; }
+  .stat { padding: 0 0 0 5vw; }
+  .stat:nth-child(odd) { border-left: 0; padding-left: 0; }
+  .stat strong { font-size: 44px; }
+  .founder, .faq, .case-story { grid-template-columns: 1fr; }
+  .case-hero { height: calc(100svh - 76px); }
+  .case-hero-copy { left: 5vw; right: 5vw; bottom: 10vw; }
+  .case-facts dl { grid-template-columns: 1fr 1fr; row-gap: 20px; }
+  .case-gallery { grid-template-columns: 1fr; gap: 3vw; }
+  .case-gallery img:nth-child(3n + 1) { aspect-ratio: 1080 / 1188; }
+  .founder-photo { max-width: 88%; }
+  .lightbox { grid-template-columns: 1fr; padding: 70px 4vw 4vw; }
+  .lightbox-nav { display: none; }
+  .lightbox img { max-height: 76vh; }
+}
+
+/* ---------- Enquiry form on its own: three fields in a row, message full width ---------- */
+#enquiry.contact-details { display: block; }
+#enquiry .enquiry-form { grid-template-columns: repeat(3, 1fr); column-gap: 3vw; max-width: 1000px; margin: 0 auto; }
+#enquiry .enquiry-form > label:nth-of-type(4),
+#enquiry .enquiry-form .form-submit,
+#enquiry .enquiry-form .form-status { grid-column: 1 / -1; }
+#enquiry .enquiry-form .form-submit { justify-self: center; }
+#enquiry .enquiry-form .form-status { text-align: center; }
+@media (max-width: 800px) {
+  #enquiry .enquiry-form { grid-template-columns: 1fr; }
+  #enquiry .enquiry-form .form-submit { justify-self: start; }
+  #enquiry .enquiry-form .form-status { text-align: left; }
+}
+
+/* ==========================================================
+   Arrow icons: drawn as SVG so iPhone shows them exactly like desktop
+   ========================================================== */
+.ico {
+  display: inline-block; width: .85em; height: .85em; vertical-align: -.06em; flex: none;
+  fill: none; stroke: currentColor; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; overflow: visible;
+}
+.marquee b .ico { width: .6em; height: .6em; vertical-align: .08em; }
+.review figcaption::before {
+  content: ""; display: inline-block; width: 15px; height: 15px; background: var(--olive);
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'%3E%3Cpath d='M2.5 9.5 9.5 2.5M4 2.5h5.5V8' fill='none' stroke='black' stroke-width='1.3' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / contain no-repeat;
+          mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'%3E%3Cpath d='M2.5 9.5 9.5 2.5M4 2.5h5.5V8' fill='none' stroke='black' stroke-width='1.3' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / contain no-repeat;
+}
+
