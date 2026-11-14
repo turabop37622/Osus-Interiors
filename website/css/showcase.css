@@ -717,3 +717,9 @@ h1 { font-size: clamp(40px, 5.4vw, 80px); }
 
 /* Reel: no "Now playing" tag on the active video */
 .reel-card::after, .reel-card.is-active::after { display: none; }
+
+/* Text only for screen readers */
+.sr-only { position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+/* Intro curtain lifts a little faster */
+.has-intro .intro { transition-duration: .8s; }
+.has-intro .intro img { animation-duration: .7s; }

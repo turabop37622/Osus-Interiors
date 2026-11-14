@@ -7,7 +7,10 @@
     const lines = heading.innerHTML.split(/<br\s*\/?>/i).map((line) => line.trim().split(/\s+/));
     const wrapper = document.createElement('span');
     wrapper.className = 'word-reveal';
-    wrapper.setAttribute('aria-label', lines.map((words) => words.join(' ')).join(' '));
+    // screen readers read this hidden copy; the animated words are aria-hidden
+    const spoken = document.createElement('span');
+    spoken.className = 'sr-only';
+    spoken.textContent = lines.map((words) => words.join(' ')).join(' ');
     let i = 0;
     lines.forEach((words, l) => {
       if (l > 0) wrapper.appendChild(document.createElement('br'));
@@ -24,15 +27,16 @@
         wrapper.appendChild(document.createTextNode(' '));
       });
     });
+    wrapper.setAttribute('aria-hidden', 'true');
     heading.textContent = '';
+    heading.appendChild(spoken);
     heading.appendChild(wrapper);
   });
 
   // Split scroll-fill headings into words; their opacity follows scroll position
   const fillHeadings = [...document.querySelectorAll('[data-scroll-fill]')].map((heading) => {
     const words = heading.textContent.trim().split(/\s+/);
-    heading.setAttribute('aria-label', words.join(' '));
-    heading.innerHTML = words
+    heading.innerHTML = '<span class="sr-only">' + words.join(' ') + '</span>' + words
       .map((word) => '<span class="fill-word" aria-hidden="true">' + word + '</span>')
       .join(' ');
     return { el: heading, words: [...heading.querySelectorAll('.fill-word')] };
@@ -515,12 +519,10 @@
 
   // Intro curtain: lift once the page has loaded and the logo has had a moment
   if (root.classList.contains('has-intro')) {
-    const loaded = new Promise((resolve) => (document.readyState === 'complete' ? resolve() : window.addEventListener('load', resolve)));
-    const minimum = new Promise((resolve) => setTimeout(resolve, 1300));
-    const cap = new Promise((resolve) => setTimeout(resolve, 3000));
-    Promise.race([Promise.all([loaded, minimum]), cap]).then(() => {
+    const minimum = new Promise((resolve) => setTimeout(resolve, 700));
+    minimum.then(() => {
       root.classList.add('intro-done');
-      setTimeout(() => document.querySelector('.intro')?.remove(), 1200);
+      setTimeout(() => document.querySelector('.intro')?.remove(), 900);
     });
   }
 
