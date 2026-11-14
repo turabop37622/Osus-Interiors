@@ -356,7 +356,16 @@
       copy.setAttribute('aria-hidden', 'true');
       reviewRow.appendChild(copy);
     });
-    reviewRow.style.animationDuration = Math.round(reviewRow.scrollWidth / 2 / 45) + 's';
+    // move at the same pace as the strip under the hero (never faster than 45px a second)
+    const setReviewPace = () => {
+      const heroStrip = document.querySelector('.marquee > div');
+      const heroSecs = heroStrip ? parseFloat(getComputedStyle(heroStrip).animationDuration) : 0;
+      const heroPace = heroStrip && heroSecs ? heroStrip.scrollWidth / 2 / heroSecs : 45;
+      const pace = Math.min(heroPace, 45);
+      reviewRow.style.animationDuration = (reviewRow.scrollWidth / 2 / pace).toFixed(1) + 's';
+    };
+    setReviewPace();
+    if (document.fonts) document.fonts.ready.then(setReviewPace); // widths change once the web fonts arrive
   }
 
   // Enquiry and review forms post to Web3Forms, which emails each submission to the studio's Gmail

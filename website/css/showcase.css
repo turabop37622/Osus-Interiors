@@ -591,3 +591,129 @@ h1 { font-size: clamp(40px, 5.4vw, 80px); }
 @media (max-width: 350px) {
   .header-cta { padding: 11px 10px; letter-spacing: .04em; }
 }
+
+/* ==========================================================
+   Founder section — "A Message from Our Founder" (client mockup)
+   ========================================================== */
+.founder-x { position: relative; overflow: hidden; background: #f4f1ed; }
+.founder-x::before { /* soft arch in the top-right corner */
+  content: ""; position: absolute; top: -18vw; right: -16vw; width: 44vw; height: 60vw; pointer-events: none;
+  border-radius: 999px 999px 0 0; background: linear-gradient(to bottom, #ebe5df, rgba(235, 229, 223, 0));
+}
+.founder-x > * { position: relative; }
+.fx-head { text-align: center; }
+.fx-eyebrow { display: flex; align-items: center; justify-content: center; gap: 22px; margin: 0; font-size: 12px; font-weight: 600; letter-spacing: .32em; text-transform: uppercase; }
+.fx-eyebrow::before, .fx-eyebrow::after { content: ""; width: 72px; height: 1px; background: var(--ink); opacity: .6; }
+.fx-head h2 { margin: 22px 0 0; font-size: clamp(34px, 4vw, 58px); line-height: 1.08; }
+.founder-x em { font-style: normal; color: #6b2a3a; }
+
+.fx-body { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 470px); gap: 6vw; align-items: center; max-width: 1180px; margin: 5vw auto 0; }
+.fx-copy h3 { position: relative; margin: 0 0 28px; padding-top: 30px; font-family: var(--serif); font-size: clamp(28px, 2.6vw, 40px); font-weight: 400; line-height: 1.12; }
+.fx-copy h3::before { content: ""; position: absolute; top: 0; left: 0; width: 64px; height: 1px; background: #6b2a3a; }
+.fx-copy p { max-width: 520px; margin: 0 0 22px; font-size: 16px; line-height: 1.8; }
+.fx-sign { display: grid; gap: 10px; margin-top: 34px; }
+.fx-signature { display: flex; align-items: center; gap: 22px; font-family: "Great Vibes", var(--serif); font-size: clamp(38px, 3.2vw, 48px); line-height: 1; color: var(--ink); }
+.fx-signature::after { content: ""; width: 72px; height: 1px; background: var(--ink); opacity: .5; }
+.fx-role { font-size: 12px; font-weight: 600; letter-spacing: .24em; text-transform: uppercase; }
+
+.fx-photo { position: relative; margin: 0; justify-self: end; width: 100%; }
+.fx-photo::before { content: ""; position: absolute; inset: 24px 24px -24px -24px; background: #e2d8cf; }
+.fx-photo > img { position: relative; display: block; width: 100%; height: auto; transform: scaleX(-1); }
+.fx-badge {
+  position: absolute; right: -14px; bottom: -34px; display: grid; place-items: center; width: 122px; height: 104px;
+  background: #5a1f2c; box-shadow: 0 16px 34px rgba(52, 21, 30, .25);
+}
+.fx-badge img { width: 84px; height: auto; }
+
+.fx-values {
+  display: grid; grid-template-columns: repeat(3, 1fr); max-width: 1180px; margin: 6vw auto 0; padding: 4vw 0 0;
+  list-style: none; border-top: 1px solid rgba(107, 42, 58, .2);
+}
+.fx-values li { display: grid; justify-items: center; gap: 10px; padding: 8px 3vw; text-align: center; }
+.fx-values li + li { border-left: 1px solid rgba(107, 42, 58, .2); }
+.fx-values svg { width: 38px; height: 38px; margin-bottom: 8px; fill: none; stroke: #6b2a3a; stroke-width: 1.4; stroke-linecap: round; stroke-linejoin: round; }
+.fx-values strong { font-family: var(--serif); font-size: clamp(20px, 1.7vw, 24px); font-weight: 400; color: #5a1f2c; }
+.fx-values span { max-width: 180px; font-size: 15px; line-height: 1.6; color: var(--rose-text, #7a4f5a); }
+
+@media (max-width: 800px) {
+  .founder-x::before { top: -30vw; right: -40vw; width: 90vw; height: 110vw; }
+  .fx-eyebrow { gap: 14px; font-size: 11px; }
+  .fx-eyebrow::before, .fx-eyebrow::after { width: 40px; }
+  .fx-head h2 { font-size: 32px; }
+  .fx-body { grid-template-columns: 1fr; gap: 16vw; margin-top: 10vw; }
+  .fx-copy h3 { font-size: 28px; }
+  .fx-photo { width: 84%; justify-self: center; margin-bottom: 6vw; }
+  .fx-photo::before { inset: 16px 16px -16px -16px; }
+  .fx-badge { right: -10px; bottom: -24px; width: 92px; height: 78px; }
+  .fx-badge img { width: 62px; }
+  .fx-values { grid-template-columns: 1fr; margin-top: 14vw; padding-top: 4vw; }
+  .fx-values li { padding: 26px 0; }
+  .fx-values li + li { border-left: 0; border-top: 1px solid rgba(107, 42, 58, .2); }
+}
+
+/* founder: arch reads as an arch, value columns start level */
+.founder-x::before { top: 4vw; right: -9vw; width: 32vw; height: 52vw; background: linear-gradient(to bottom, #ece5de 0%, rgba(236, 229, 222, 0) 85%); box-shadow: inset 0 0 0 1px rgba(107, 42, 58, .06); }
+.fx-values li { align-content: start; }
+@media (max-width: 800px) { .founder-x::before { top: 6vw; right: -34vw; width: 70vw; height: 110vw; } }
+.founder-x::before { box-shadow: none; }
+@media (max-width: 800px) {
+  /* values stay three across on phones, like the mockup */
+  .fx-values { grid-template-columns: repeat(3, 1fr); margin-top: 14vw; padding-top: 7vw; }
+  .fx-values li { padding: 0 2vw; gap: 6px; }
+  .fx-values li + li { border-top: 0; border-left: 1px solid rgba(107, 42, 58, .2); }
+  .fx-values svg { width: 28px; height: 28px; margin-bottom: 4px; }
+  .fx-values strong { font-size: 16px; line-height: 1.2; }
+  .fx-values span { font-size: 12px; line-height: 1.5; }
+}
+
+/* founder: text starts on the left page edge, photo ends on the right page edge */
+.fx-body, .fx-values { max-width: none; margin-left: 0; margin-right: 0; }
+@media (min-width: 801px) { .fx-body { grid-template-columns: minmax(0, 1fr) minmax(0, clamp(360px, 33vw, 520px)); } }
+.fx-copy p { max-width: 600px; }
+.fx-badge { right: 0; }
+@media (max-width: 800px) { .fx-photo { width: 86%; justify-self: end; } }
+@media (max-width: 800px) { .fx-photo { max-width: 440px; } }
+
+/* Headings on one line on desktop (they wrap naturally on phones) */
+@media (min-width: 1100px) {
+  .section-heading { grid-template-columns: max-content 1fr; }
+  .section-heading h2 { white-space: nowrap; }
+  .faq { grid-template-columns: 1fr; gap: 3vw; }
+  .faq-head h2 { white-space: nowrap; margin-bottom: 0; }
+}
+
+/* Founder photo on phones: centred, with equal space left and right (the sand block sits 16px to the left) */
+@media (max-width: 800px) {
+  .fx-photo { width: calc(100% - 16px); max-width: 440px; justify-self: center; transform: translateX(8px); margin-left: 0; margin-right: 0; }
+}
+
+/* ==========================================================
+   Footer on phones: compact
+   (logo + socials on one row, Explore and Contact side by side,
+    small sketch, one-line bottom bar)
+   ========================================================== */
+@media (max-width: 800px) {
+  .site-footer { padding: 11vw 5vw 18px; }
+  .footer-main { gap: 8vw; padding-bottom: 6vw; }
+  .footer-grid { grid-template-columns: 1fr 1fr; gap: 28px 6vw; }
+  .footer-brand { grid-column: 1 / -1; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 14px; }
+  .footer-brand img { width: 104px; }
+  .footer-brand p { display: none; }
+  .footer-social { gap: 8px; }
+  .footer-social a { width: 40px; height: 40px; }
+  .footer-col:last-child { grid-column: auto; }
+  .footer-col h3 { margin-bottom: 6px; font-size: 19px; }
+  .footer-col a, .footer-col p { min-height: 36px; font-size: 14px; }
+  .footer-col p { line-height: 1.4; }
+  .footer-col .footer-cta { margin-top: 8px; padding: 10px 12px; min-height: 40px; font-size: 10px; }
+  .footer-sketch { max-width: 250px; justify-self: center; }
+  .site-footer .footer-bottom { flex-direction: row; align-items: center; padding: 14px 64px 0 0; font-size: 10px; letter-spacing: .06em; }
+  .site-footer .footer-bottom p { line-height: 1.4; }
+}
+@media (max-width: 360px) {
+  .footer-col .footer-cta { white-space: normal; }
+}
+@media (max-width: 800px) { .site-footer .footer-bottom a { white-space: nowrap; flex: none; } }
+
+/* Reel: no "Now playing" tag on the active video */
+.reel-card::after, .reel-card.is-active::after { display: none; }
